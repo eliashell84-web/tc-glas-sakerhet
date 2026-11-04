@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TC Glas Säkerhet</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* Layout: one narrow phone-first column; red emergency block first, then first aid, report routine, SDB list */
+:root{
+  --bg:#f5f6f7; --surface:#ffffff; --fg:#16202b; --muted:#5a6672; --line:#dde2e7;
+  --accent:#1f4e79; --danger:#c8102e; --danger-ink:#ffffff; --warn:#f2b705;
+  --display:"Archivo",system-ui,sans-serif; --body:"Source Sans 3",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f151b; --surface:#18212a; --fg:#e8edf2; --muted:#9aa7b3; --line:#2a3540;
+  --accent:#7fb2e0; --danger:#d81e3a; --danger-ink:#ffffff; --warn:#f2c12e; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f151b; --surface:#18212a; --fg:#e8edf2; --muted:#9aa7b3; --line:#2a3540;
+  --accent:#7fb2e0; --danger:#d81e3a; --danger-ink:#ffffff; --warn:#f2c12e; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:16px/1.5 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px}
+main{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0}
+h1{font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
+h2{font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
+.eyebrow{font:600 .75rem var(--body);text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+header{display:flex;flex-direction:column;gap:4px;border-bottom:3px solid var(--warn);padding-bottom:12px}
+section{display:flex;flex-direction:column;gap:12px}
+.sos{background:var(--danger);color:var(--danger-ink);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.sos .big{font:800 3rem/1 var(--display);letter-spacing:.02em}
+.sos p{margin:0}
+.numbers{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.num{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:2px}
+.num b{font:700 1.25rem var(--display);font-variant-numeric:tabular-nums}
+.num span{color:var(--muted);font-size:.9rem}
+.aid{display:grid;gap:10px}
+.aid div{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--warn);border-radius:6px;padding:10px 12px}
+.aid b{display:block;font-family:var(--display)}
+ol{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px}
+.sdb{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.sdb li{border-bottom:1px solid var(--line)}
+.sdb a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 4px;color:var(--fg);text-decoration:none}
+.sdb a:hover,.sdb a:focus-visible{background:var(--surface);outline:none}
+.sdb a:focus-visible{box-shadow:inset 0 0 0 2px var(--accent)}
+.sdb .name{display:flex;flex-direction:column;min-width:0}
+.sdb .name strong{font-weight:600}
+.sdb .name small{color:var(--muted)}
+.sdb .go{flex:none;font:700 .8rem var(--display);color:var(--accent);letter-spacing:.05em}
+.sites{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.sites div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px}
+footer{color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+
+<main>
+<header>
+  <span class="eyebrow">TC Glas · Verkstad</span>
+  <h1>Olycka, tillbud eller frågor</h1>
+</header>
+
+<section class="sos" aria-label="Nödläge">
+  <span class="big">112</span>
+  <p><strong>Vid allvarlig skada, medvetslöshet, andningsbesvär eller brand: ring 112.</strong> Säg adressen, vad som hänt och vilken kemikalie det gäller.</p>
+</section>
+
+<section>
+  <h2>Andra nummer</h2>
+  <div class="numbers">
+    <div class="num"><b>010-456 67 00</b><span>Giftinformationscentralen, frågor om förgiftning (ej akut)</span></div>
+    <div class="num"><b>1177</b><span>Sjukvårdsrådgivning</span></div>
+    <div class="num"><b>Telge Företagshälsovård</b><span>Arbetsrelaterade besvär och uppföljning</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Adresser</h2>
+  <div class="sites">
+    <div><b>Trosa</b><br>Ådavägen 3, Trosa</div>
+    <div><b>Södertälje</b><br>Klastorpsvägen 30, 152 42 Södertälje</div>
+  </div>
+</section>
+
+<section>
+  <h2>Första hjälpen</h2>
+  <div class="aid">
+    <div><b>Kemikalie i ögat</b>Skölj direkt med ögondusch eller rinnande vatten i minst 15 minuter. Ta ut kontaktlinser. Kontakta läkare.</div>
+    <div><b>Kemikalie på huden</b>Ta av förorenade kläder. Tvätta med tvål och mycket vatten. Lim som härdat på huden: dra inte loss, tvätta och kontakta vården vid besvär.</div>
+    <div><b>Inandning</b>Gå ut i frisk luft. Vid hosta, pip i bröstet eller andnöd: ring 112.</div>
+    <div><b>Förtäring</b>Skölj munnen med vatten. Framkalla inte kräkning. Ring Giftinformationscentralen eller 112.</div>
+    <div><b>Skärskada av glas</b>Tryck hårt mot såret med rent förband och håll kroppsdelen högt. Kraftig blödning: ring 112.</div>
+  </div>
+  <p>Ha alltid produktens säkerhetsdatablad (nedan) till hands när du ringer.</p>
+</section>
+
+<section>
+  <h2>Efter händelsen</h2>
+  <ol>
+    <li>Säg till din närmsta chef samma dag, även vid små skärskador och tillbud.</li>
+    <li>Skriv en händelserapport tillsammans med chefen samma dag.</li>
+    <li>Chefen gör en riskbedömning och bestämmer åtgärder med ansvarig och datum.</li>
+    <li>Händelsen och åtgärderna tas upp på nästa APT.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Kemikalieregister</h2>
+  <ul class="sdb">
+    <li><a href="kemikalieregister.pdf" target="_blank" rel="noopener"><span class="name"><strong>TC Glas Kemikalieregister</strong><small>TCG-KEM-001 · Rev 1.0 · PSA, förvaring och första hjälpen per produkt</small></span><span class="go">PDF ↗</span></a></li>
+  </ul>
+</section>
+
+<section>
+  <h2>Säkerhetsdatablad</h2>
+  <ul class="sdb">
+    <li><a href="https://swe.sika.com/dms/getdocument.get/a38b63d6-e9b0-4e61-a8fb-fd2caed4dee5_se01/sds-sikatack-max30purform.pdf" target="_blank" rel="noopener"><span class="name"><strong>SikaTack MAX 30 (Purform)</strong><small>Rutlim · EUH204, isocyanater</small></span><span class="go">SDB ↗</span></a></li>
+    <li><a href="https://swe.sika.com/dam/dms/se01/q/sds-sika-primer-507.pdf" target="_blank" rel="noopener"><span class="name"><strong>Sika Primer-507</strong><small>Primer · H225 mycket brandfarlig, H336</small></span><span class="go">SDB ↗</span></a></li>
+    <li><a href="https://cdn.wurth.se/catalog/pim/1249268-93078.pdf" target="_blank" rel="noopener"><span class="name"><strong>Würth 2K Plastlim ME 30 sek</strong><small>Plastlim · H317, H319, H332, H335</small></span><span class="go">SDB ↗</span></a></li>
+    <li><a href="https://cdn.wurth.se/catalog/pim/1249269-93080.pdf" target="_blank" rel="noopener"><span class="name"><strong>Würth 2K Plastlim ME 210 sek</strong><small>Plastlim · H317, H319, H332, H335</small></span><span class="go">SDB ↗</span></a></li>
+    <li><a href="https://www.pilkington.com/-/media/pilkington/site-content/sweden/automotive/sakerhetsdatablad/other/pro201515ml1120181116.pdf" target="_blank" rel="noopener"><span class="name"><strong>Pro2010 Resin</strong><small>Stenskott · H317, H315, H318, H335</small></span><span class="go">SDB ↗</span></a></li>
+    <li><a href="https://www.pilkington.com/-/media/pilkington/site-content/sweden/automotive/sakerhetsdatablad/glas-weld/gwsd-pit-filler-200020-swe-1606.pdf" target="_blank" rel="noopener"><span class="name"><strong>GlasWeld Pit Filler</strong><small>Stenskott · H317, H315, H319, H335</small></span><span class="go">SDB ↗</span></a></li>
+    <li><a href="https://productinfoimg.luna.se/c4documents/1046509.pdf" target="_blank" rel="noopener"><span class="name"><strong>Glasrent</strong><small>Glasputs · H315, H319</small></span><span class="go">SDB ↗</span></a></li>
+    <li><a href="https://cdn.starwebserver.se/shops/careofcars/files/sds-blad_203_150418148.pdf" target="_blank" rel="noopener"><span class="name"><strong>Lahega Alfanol HD Grön</strong><small>Avfettning · H314 frätande</small></span><span class="go">SDB ↗</span></a></li>
+    <li><a href="https://ichemistry.intersolia.com/pdf/1517/78f30652-69bd-450e-afad-abb204100d6e/100/Lahega_Rust_Off_pH-neutral_S_260604033037" target="_blank" rel="noopener"><span class="name"><strong>Lahega Rust Off pH-neutral</strong><small>Rostlösare · H302, H315, H317, H318</small></span><span class="go">SDB ↗</span></a></li>
+    <li><a href="https://azupcs365certviewer.azurewebsites.net/api/GetSDB?env=se&amp;articleNr=773447" target="_blank" rel="noopener"><span class="name"><strong>Lahega Tar Solv 71W</strong><small>Kallavfettning · H304</small></span><span class="go">SDB ↗</span></a></li>
+    <li><a href="https://productinfoimg.luna.se/c4documents/1046523.pdf" target="_blank" rel="noopener"><span class="name"><strong>Lahega Wax Shampoo Plus</strong><small>Biltvätt · H318</small></span><span class="go">SDB ↗</span></a></li>
+    <li><a href="https://www.bskemi.se/wp-content/uploads/2020/08/Grovrent.pdf" target="_blank" rel="noopener"><span class="name"><strong>Grovrent</strong><small>Rengöring · H314 frätande</small></span><span class="go">SDB ↗</span></a></li>
+    <li><a href="https://produkter.hygienteknik.se/SDB/41002SDB.pdf" target="_blank" rel="noopener"><span class="name"><strong>Lahega Greenium Spolarvätska</strong><small>Spolarvätska · H225, H319</small></span><span class="go">SDB ↗</span></a></li>
+  </ul>
+</section>
+
+<footer>ABTC Glas AB · org.nr 559003-4681 · Frågor om arbetsmiljö tas med närmsta chef.</footer>
+</main>
+</body>
+</html>
